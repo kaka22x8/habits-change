@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#FF6B6B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="改变自己">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/style.css">
+<title>改变自己</title>
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- Header -->
+  <header class="app-header">
+    <div>
+      <div class="title">改变自己</div>
+      <div class="subtitle" id="headerMotivation">每天进步一点点</div>
+    </div>
+    <div class="header-date">
+      <div class="day" id="headerDay"></div>
+      <div class="month-year" id="headerMonthYear"></div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content" id="mainContent">
+
+    <!-- ====== Screen: Check-in ====== -->
+    <div class="screen active" id="screen-checkin">
+      <div class="summary-card" id="summaryCard">
+        <div class="summary-row">
+          <div>
+            <div class="summary-label">今日完成</div>
+            <div class="summary-detail" id="summaryMotivation">继续保持！</div>
+          </div>
+          <div class="summary-value" id="summaryCount">0/6</div>
+        </div>
+      </div>
+
+      <div class="habits-grid" id="habitsGrid"></div>
+    </div>
+
+    <!-- ====== Screen: Calendar ====== -->
+    <div class="screen" id="screen-calendar">
+      <div class="calendar-nav">
+        <button class="nav-btn" id="calPrev">◂</button>
+        <span class="month-label" id="calMonthLabel"></span>
+        <button class="nav-btn" id="calNext">▸</button>
+      </div>
+      <div class="calendar-weekdays">
+        <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+      </div>
+      <div class="calendar-grid" id="calGrid"></div>
+      <div class="day-detail" id="dayDetail"></div>
+      <div class="calendar-legend" id="calLegend"></div>
+    </div>
+
+    <!-- ====== Screen: Expenses ====== -->
+    <div class="screen" id="screen-expenses">
+      <div class="expense-summary">
+        <div class="total-label">本月支出</div>
+        <div class="total-amount">
+          <span class="currency">¥</span>
+          <span id="expenseTotal">0.00</span>
+        </div>
+      </div>
+      <div class="section-title">近期记录</div>
+      <div class="expense-list" id="expenseList">
+        <div class="empty-state">
+          <div class="empty-icon">📝</div>
+          <div class="empty-text">还没有记账记录<br>点击下方按钮开始记录</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== Screen: Stats ====== -->
+    <div class="screen" id="screen-stats">
+      <div class="section-title">打卡统计</div>
+      <div id="habitStats"></div>
+    </div>
+
+  </main>
+
+  <!-- Tab Bar -->
+  <nav class="tab-bar">
+    <button class="tab-item active" data-screen="checkin">
+      <span class="tab-icon">📋</span>
+      <span class="tab-label">打卡</span>
+    </button>
+    <button class="tab-item" data-screen="calendar">
+      <span class="tab-icon">📅</span>
+      <span class="tab-label">日历</span>
+    </button>
+    <button class="tab-item" data-screen="expenses">
+      <span class="tab-icon">💳</span>
+      <span class="tab-label">记账</span>
+    </button>
+    <button class="tab-item" data-screen="stats">
+      <span class="tab-icon">📊</span>
+      <span class="tab-label">统计</span>
+    </button>
+  </nav>
+</div>
+
+<!-- FAB for adding expense -->
+<button class="fab" id="fabAddExpense" style="display:none;">+</button>
+
+<!-- Expense Modal -->
+<div class="modal-overlay" id="expenseModal">
+  <div class="modal-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">记一笔</div>
+    <div class="form-group">
+      <label>金额 (¥)</label>
+      <input type="number" id="expAmount" placeholder="0.00" step="0.01" inputmode="decimal">
+    </div>
+    <div class="form-group">
+      <label>分类</label>
+      <div class="category-picker" id="expCategoryPicker"></div>
+    </div>
+    <div class="form-group">
+      <label>备注</label>
+      <input type="text" id="expNote" placeholder="可选备注...">
+    </div>
+    <div class="form-group">
+      <label>日期</label>
+      <input type="date" id="expDate">
+    </div>
+    <button class="btn btn-primary" id="btnSaveExpense">保存</button>
+    <button class="btn btn-secondary" id="btnCloseModal">取消</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

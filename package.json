@@ -1,0 +1,23 @@
+{
+  "name": "habits-change",
+  "version": "1.0.0",
+  "description": "改变自己 - 习惯打卡与记账",
+  "main": "www/index.html",
+  "scripts": {
+    "sync": "npx cap sync",
+    "copy": "npx cap copy",
+    "open": "npx cap open android",
+    "build": "npx cap sync && npx cap open android",
+    "android": "npx cap sync && cd android && ./gradlew assembleDebug"
+  },
+  "keywords": ["habit-tracker", "expense-manager", "android"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@capacitor/android": "^8.3.4",
+    "@capacitor/cli": "^8.3.4",
+    "@capacitor/core": "^8.3.4",
+    "@capacitor/status-bar": "^8.0.2"
+  }
+}

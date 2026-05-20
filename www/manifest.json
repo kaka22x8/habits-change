@@ -1,0 +1,18 @@
+{
+  "name": "改变自己 - 习惯打卡与记账",
+  "short_name": "改变自己",
+  "description": "记录每日习惯打卡，管理个人收支",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F2F3F7",
+  "theme_color": "#FF6B6B",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
